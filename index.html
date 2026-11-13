@@ -25,14 +25,14 @@
 
 */
       async function testCORS() {
-    const endpoint = "https://light-ed.vercel.app/courses";
+    const endpoint = "https://light-ed.vercel.app/dashboard/teacher";
 
     // Use a token belonging to your own test account.
     const testToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxNCIsImV4cCI6MTc5NDY3NDk3MSwidHlwZSI6ImFjY2VzcyJ9.owZDJzpSOUCeaiuQ_CncKZ9YzdJQ31NYmVe3iHLBpNY"
 
     try {
         const response = await fetch(endpoint, {
-            method: "GET",
+            method: "GET","OPTIONS",
             headers: {
                 "Authorization": `Bearer ${testToken}`
             },
