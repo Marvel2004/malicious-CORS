@@ -17,7 +17,7 @@
 			}
 		}
 		
-		req.open('GET', url + "/auth/login", true); 
+		req.open('GET', url + "/courses", true); 
 		req.withCredentials = true; 
 		req.send(); 
 		
@@ -25,7 +25,7 @@
 
 
       async function testCORS() {
-				const url = "https://light-ed.vercel.app/auth/login";
+				const url = "https://light-ed.vercel.app/courses";
 
 				try {
 					const response = await fetch(endpoint, {
